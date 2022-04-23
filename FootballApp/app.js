@@ -26,7 +26,7 @@ import playerRouter from './routes/player.js'
 import resultRouter from './routes/result.js';
 import connectDB from './database/connectDB.js';
 import homeRouter from './routes/home.js';
-
+import scheduleRouter from './routes/schedule.js';
 
 
 connectDB(app);
@@ -46,6 +46,7 @@ app.use('/',homeRouter)
 app.use('/team', teamRouter)
 app.use('/player',playerRouter)
 app.use('/result',resultRouter)
+app.use('/schedule',scheduleRouter)
 app.use(express.static(__dirname + '/publics'));
 
 const port = 5555;

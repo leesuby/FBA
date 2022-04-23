@@ -4,8 +4,8 @@ export const connectionInfo = {
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: 'root',
-    database: 'sys'
+    password: 'leesuby.tl123',
+    database: 'fba'
 };
 
 const knex = knexObj({

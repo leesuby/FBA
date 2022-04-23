@@ -3,14 +3,26 @@ import db from "../database/db.js";
 export default{
     findAll(limit,offset) {
         
-        return db('tran_dau').limit(limit).offset(offset);
+        return db('tran_dau').limit(limit).offset(offset)
+        .join('doi_bong as doi1',{'tran_dau.DoiChuNha': 'doi1.MaDoi'})
+        .join('doi_bong as doi2',{'tran_dau.DoiKhach':'doi2.MaDoi'})
+        .select(
+            'DoiChuNha',
+            'VongDau',
+            'DoiKhach',
+            'NgayThiDau',
+            'GioThiDau',
+            'SanDau',
+            'doi1.TenDoi as TenDoiChuNha',
+            'doi2.TenDoi as TenDoiKhach'
+        );
     },
     findByRoundID(roundId) {
          
         return db('tran_dau').where('VongDau', roundId);
     },
     async countAll() {
-        const list = await db('tran_dau').count({quantity: ['MaTran','VongDau']});
+        const list = await db('tran_dau').count({quantity: 'MaTran'});
 
         return list[0].quantity;
     },
