@@ -2,7 +2,7 @@ import db from "../database/db.js";
 
 export default{
     async findAll(limit,offset) {
-        return await db('cau_thu').limit(limit).offset(offset);
+        return await db('cau_thu').join('doi_bong', {'cau_thu.DoiBong': 'doi_bong.MaDoi'}).limit(limit).offset(offset);
     },
     findByID(id) {
          

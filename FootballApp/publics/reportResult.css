@@ -106,17 +106,16 @@ section{
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }  
 .pagination{
-display: flex;
-justify-content: center;
-margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 .page-item{
-margin-right: 10px;
-background-color: rgb(39, 157, 121);
-padding: 10px;
-
-color: black;
+  margin-right: 10px;
 }
 .page-link{
-color: blue;
+  color: black;
+  background-color: rgb(39, 157, 121);
+  border: 3px solid white;
+
 }
