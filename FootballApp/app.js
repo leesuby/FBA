@@ -29,8 +29,10 @@ import connectDB from './database/connectDB.js';
 connectDB(app);
 
 app.get('/', function (req, res) {
-  res.render("Login")
-})
+  res.render("Login",{
+    layout : "auth.hbs"
+  });
+});
 
 app.use('/team', teamRouter)
 app.use('/player',playerRouter)
