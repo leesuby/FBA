@@ -4,8 +4,8 @@ const playerRouter = Router()
 
 playerRouter.get('/', async function (req, res) {
   const page = req.query.page || 1;
-  const limit = 8;
-  const total = playerModel.countAllPlayer();
+  const limit = 7;
+  const total = await playerModel.countAllPlayer();
   let nPages = Math.floor(total / limit);
   if (total % limit > 0) nPages++;
   const pageNumbers = [];
@@ -21,7 +21,7 @@ playerRouter.get('/', async function (req, res) {
 
   console.log(list);
   res.render('viewPlayer', {
-      products: list,
+      players: list,
       empty: list.length === 0,
       pageNumbers,
       firstPage: +page === 1,
@@ -30,5 +30,4 @@ playerRouter.get('/', async function (req, res) {
       nextPage: +page + 1,
   })
 })
-
 export default playerRouter;

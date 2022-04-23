@@ -15,18 +15,20 @@
 <body>
   <section>
   <!--for demo wrap-->
-  <h1>Đội bóng 3AE
-    <button style="font-size: 10px;">Tìm kiếm</div>
-  </h1>
+
+  <div class="buttons">
+    <button href="/player">Tìm kiếm</button>
+    <button>Làm mới</button>
+  </div>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th>STT</th>
-          <th>Cầu thủ</th>
-          <th>Ngày sinh</th>
+          <th>Mã Cầu Thủ</th>
+          <th>Tên cầu thủ</th>
+          <th>Đội bóng</th>
           <th>Loại cầu thủ</th>
-          <th>Ghi chú</th>
+          <th>Tổng số bàn thắng</th>
         </tr>
       </thead>
     </table>
@@ -34,30 +36,50 @@
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Long Đẹp</td>
-          <td>21/05/2001</td>
-          <td>1</td>
-          <td>Đẹp</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Đạt Íu</td>
-            <td>02/02/2001</td>
-            <td>1</td>
-            <td>ÍU</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Mama</td>
-            <td>02/02/2001</td>
-            <td>2</td>
-            <td>Mama vô địch</td>
-        </tr>
+        {{#each this.players}}
+          <tr>
+            <td>{{MaCauThu}}</td>
+            <td>{{TenCauThu}}</td>
+            <td>{{DoiBong}}</td>
+            <td>{{LoaiCauThu}}</td>
+            <td>{{TongBanThang}}</td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
   </div>
+  <div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination" >
+            <li class="page-item">
+                {{#if this.firstPage}}
+                    <a class="page-link disabled" style="cursor: not-allowed; color: black;">Previous</a>
+                {{else}}
+                    <a class="page-link" href="?page={{this.previousPage}}">Previous</a>
+                {{/if}}
+            </li>
+            {{#each this.pageNumbers}}
+                {{#if isCurrent}}
+                    <li class="page-item active" >
+                        <a class="page-link" href="javascript:;" style="color: blue;">{{value}}</a>
+                    </li>
+                {{else}}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{value}}">{{value}}</a>
+                    </li>
+                {{/if}}
+            {{/each}}
+            <li class="page-item">
+                {{#if this.lastPage}}
+                    <a class="page-link" style="cursor: not-allowed; color: black;">Next</a>
+                {{else}}
+                    <a class="page-link" href="?page={{this.nextPage}}">Next</a>
+                {{/if}}
+            </li>
+        </ul>
+    </nav>
+  </div>
+  
 </section>
 
 
