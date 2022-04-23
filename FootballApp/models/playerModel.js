@@ -1,8 +1,7 @@
-import db from "../utils/db.js";
+import db from "../database/db.js";
 
 export default{
     async findAllPlayer(limit, offset) {
-        const date = new Date();
         return await db('cau_thu').limit(limit).offset(offset);
     },
     async countAllPlayer(){

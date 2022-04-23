@@ -20,7 +20,7 @@ app.use('/team', teamRouter)
 app.use('/player',playerRouter)
 app.use(express.static(__dirname + '/publics'));
 
-const port = 3000;
-app.listen(port, function(){
+const port = 5555;
+app.listen(port, async function(){
     console.log(`App listening at http://localhost:${port}`)
 })

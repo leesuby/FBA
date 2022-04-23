@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import playerModel from '../models/playerModel';
+import playerModel from '../models/playerModel.js';
 const playerRouter = Router()
 
-playerRouter.get('/', function (req, res) {
+playerRouter.get('/', async function (req, res) {
   const page = req.query.page || 1;
   const limit = 8;
-  const total = await playerModel.countAllPlayer();
+  const total = playerModel.countAllPlayer();
   let nPages = Math.floor(total / limit);
   if (total % limit > 0) nPages++;
   const pageNumbers = [];
@@ -17,7 +17,7 @@ playerRouter.get('/', function (req, res) {
       });
   }
 
-  const list = await playerModel.findAll(limit, offset);
+  const list = await playerModel.findAllPlayer(limit, offset);
 
   console.log(list);
   res.render('viewPlayer', {
