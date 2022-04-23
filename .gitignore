@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # database file
-database/db.js
+FBA/database/db.js
