@@ -1,11 +1,11 @@
 
 h1{
-    font-size: 30px;
+    font-size: 40px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 300;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   }
 table{
     width:100%;
@@ -21,6 +21,8 @@ button{
   display: flex;
   justify-content: center;
 }
+.big-table{
+}
   .tbl-header{
     background-color: rgba(255,255,255,0.3);
    }
@@ -28,6 +30,7 @@ button{
     height:300px;
     overflow-x:auto;
     margin-top: 0px;
+
     border: 1px solid rgba(255,255,255,0.3);
   }
   th{
@@ -100,15 +103,14 @@ button{
 .pagination{
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .page-item{
   margin-right: 10px;
-  background-color: rgb(39, 157, 121);
-  padding: 10px;
-  
-  color: black;
 }
 .page-link{
-  color: blue;
+  color: black;
+  background-color: rgb(39, 157, 121);
+  border: 3px solid white;
+
 }

@@ -1,71 +1,78 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>Fixed table header</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-  
-      <link rel="stylesheet" href="/viewTeam.css">
-
-  
-</head>
 
 <body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="/viewPlayer.css">
+
   <section>
   <!--for demo wrap-->
-  <h1>Đội bóng 3AE
-    <div style="font-size: 12px;">Sân nhà: Sài Gòn</div>
-  </h1>
-  
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>STT</th>
-          <th>Cầu thủ</th>
-          <th>Ngày sinh</th>
-          <th>Loại cầu thủ</th>
-          <th>Ghi chú</th>
-        </tr>
-      </thead>
-    </table>
+  <div>
+    <h1><a href='/team'>Tra cứu đội bóng</a></h1>
   </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Long Đẹp</td>
-          <td>21/05/2001</td>
-          <td>1</td>
-          <td>Đẹp</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Đạt Íu</td>
-            <td>02/02/2001</td>
-            <td>1</td>
-            <td>ÍU</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Mama</td>
-            <td>02/02/2001</td>
-            <td>2</td>
-            <td>Mama vô địch</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Mã đội</th>
+            <th>Tên đội</th>
+            <th>Sân nhà</th>
+            <th>Số bàn thắng</th>
+            <th>Số bàn thua</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          {{#each this.teams}}
+            <tr>
+              <td>{{MaDoi}}</td>
+              <td>{{TenDoi}}</td>
+              <td>{{TenSan}}</td>
+              <td>{{SoBanThang}}</td>
+              <td>{{SoBanThua}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  
+  <div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination" >
+            <li class="page-item">
+                {{#if this.firstPage}}
+                    <a class="page-link disabled" style="cursor: not-allowed; ">Previous</a>
+                {{else}}
+                    <a class="page-link" href="?page={{this.previousPage}}">Previous</a>
+                {{/if}}
+            </li>
+            {{#each this.pageNumbers}}
+                {{#if isCurrent}}
+                    <li class="page-item active" >
+                        <a class="page-link" href="javascript:;" style="color: rgb(111, 70, 85);">{{value}}</a>
+                    </li>
+                {{else}}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{value}}">{{value}}</a>
+                    </li>
+                {{/if}}
+            {{/each}}
+            <li class="page-item">
+                {{#if this.lastPage}}
+                    <a class="page-link" style="cursor: not-allowed;">Next</a>
+                {{else}}
+                    <a class="page-link" href="?page={{this.nextPage}}">Next</a>
+                {{/if}}
+            </li>
+        </ul>
+    </nav>
   </div>
 </section>
-
 
 <!-- follow me template -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
-
 </body>
-</html>

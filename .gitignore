@@ -105,3 +105,4 @@ dist
 
 # database file
 FBA/database/db.js
+FootballApp/database/db.js

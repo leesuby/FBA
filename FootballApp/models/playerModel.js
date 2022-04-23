@@ -1,9 +1,8 @@
 import db from "../database/db.js";
 
 export default{
-    findAll(limit,offset) {
-        
-        return db('cau_thu').limit(limit).offset(offset);
+    async findAll(limit,offset) {
+        return await db('cau_thu').limit(limit).offset(offset);
     },
     findByID(id) {
          
@@ -11,7 +10,6 @@ export default{
     },
     async countAll() {
         const list = await db('cau_thu').count({quantity: 'MaCauThu'});
-
         return list[0].quantity;
     },
     findByName(name) {

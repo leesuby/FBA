@@ -3,17 +3,14 @@
 import db from "../database/db.js";
 
 export default{
-    findAll(limit,offset) {
-        
-        return db.select('*').from('doi_bong').join('san_bong', {'doi_bong.SanNha': 'san_bong.MaSan'}).limit(limit).offset(offset);
+    async findAll(limit,offset) {
+        return await db.select('*').from('doi_bong').join('san_bong', {'doi_bong.SanNha': 'san_bong.MaSan'}).limit(limit).offset(offset);
     },
     findByID(id) {
-         
         return db.select('*').from('doi_bong').join('san_bong', {'doi_bong.SanNha': 'san_bong.MaSan'}).where('MaDoi', id);
     },
     async countAll() {
         const list = await db('doi_bong').count({quantity: 'MaDoi'});
-
         return list[0].quantity;
     },
     findByName(name) {
