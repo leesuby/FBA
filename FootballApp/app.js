@@ -37,6 +37,11 @@ app.get('/', function (req, res) {
   });
 });
 
+//body parse JSON POST REQUEST
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.use('/',homeRouter)
 app.use('/team', teamRouter)
 app.use('/player',playerRouter)
