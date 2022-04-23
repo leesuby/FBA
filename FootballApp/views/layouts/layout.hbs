@@ -35,13 +35,26 @@
       <div class="input-group rounded " style="width: 70%; margin-top:30px; margin-bottom: 0px;margin-right:60px">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
           aria-describedby="search-addon" name="keyword" />
-        <button class="btn btn-info" style=" margin-top:0px; margin-left:0px;" type="submit">
+        <button class="btn btn-info btnSearch" style=" margin-top:0px; margin-left:0px;" type="submit">
           <i class="fa fa-search" aria-hidden="true" style="padding:5px 10px; color:white"></i>
         </button>
       </div>
+      <div class="btn-group" style="height: 30%;  margin-right:40px ">
+        <button id="typeButton" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="margin: 15px; margin-top:30px ">
+          Chức năng
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/player" >Tra cứu cầu thủ</a>
+          <a class="dropdown-item" href="/team" >Tra cứu đội bóng</a>
+          <a class="dropdown-item" href="/result" >Lập báo cáo giải</a>
+          <a class="dropdown-item" href="/schedule" >Xem lịch thi đấu</a>
+        </div>
 
       <i style="margin-right: 15px;margin: 20px 20px; color:aliceblue" class="fa fa-user-circle fa-3x"
         aria-hidden="true"></i>
+
+
     </nav>
 
   </form>
