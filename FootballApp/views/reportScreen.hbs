@@ -1,1 +1,41 @@
+<html>
+<head>
+    <style>
+        .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+
+}
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 4 DatePicker</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
 <h1 style="text-align: center; color:lightcyan">Báo cáo giải đấu</h1>
+
+<form>
+    <label for="staticEmail" class="col-sm-2 col-form-label" style="color:lightcyan">Chọn ngày: </label>
+    <input id="datepicker" width="276" style="display:inline;margin-left:15px" />
+    <div class="center">
+        <button style="border-radius:10px;background-color:royalblue;color:white">Lập báo cáo</button>
+    </div>
+</form>
+
+
+
+
+</body>
+</html>
+
+<script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>

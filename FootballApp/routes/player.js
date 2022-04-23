@@ -30,4 +30,11 @@ playerRouter.get('/', async function (req, res) {
       nextPage: +page + 1,
   })
 })
+
+playerRouter.post('/search', async function (req, res) {
+    
+    res.render('viewPlayer', {
+      
+    })
+  })
 export default playerRouter;

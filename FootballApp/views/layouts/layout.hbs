@@ -12,34 +12,39 @@
 </head>
 
 <body>
+  <form method="GET" action="/search">
+    <nav class="d-flex justify-content-between">
+      <a class="header__logo hide-for-mobile flex flex-ai-c" href="/">
+        <img style="width: 30%;margin-left: 15px;margin-top: 5px;" class="img-fluid" src="/images/logo_ver1.png" />
+      </a>
 
-  <nav class="d-flex justify-content-between">
-    <a class="header__logo hide-for-mobile flex flex-ai-c" href="/">
-      <img style="width: 30%;margin-left: 15px;margin-top: 5px;" class="img-fluid" src="/images/logo_ver1.png" />
-    </a>
+      <div class="btn-group" style="height: 30%;  margin-right:40px ">
 
-    <div class="btn-group" style="height: 30%;  margin-right:40px ">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false" style="margin: 15px; margin-top:30px ">
-        Loại
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Cầu thủ</a>
-        <a class="dropdown-item" href="#">Đội bóng</a>
-      </div>
-    </div>
-
-    <div class="input-group rounded " style="width: 70%; margin-top:30px ;margin-right:60px">
-      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-        aria-describedby="search-addon" />
-        <button class="btn btn-info" style="margin: 15px; margin-top:0px; margin-left:0px;" >
-           <i class="fa fa-search" aria-hidden="true" style="color:white"></i>
+        <button id="typeButton" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="margin: 15px; margin-top:30px ">
+          Cầu thủ
         </button>
-    </div>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" onclick="change1()">Cầu thủ</a>
+          <a class="dropdown-item" href="#" onclick="change2()">Đội bóng</a>
+        </div>
 
-    <i style="margin-right: 15px;margin-top: 15px; color:aliceblue" class="fa fa-user-circle fa-4x"
-      aria-hidden="true"></i>
-  </nav>
+        <input id="typeSearch" type="hidden" name="category" value="Player">
+      </div>
+
+      <div class="input-group rounded " style="width: 70%; margin-top:30px ;margin-right:60px">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+          aria-describedby="search-addon" name="keyword" />
+        <button class="btn btn-info" style="margin: 15px; margin-top:0px; margin-left:0px;" type="submit">
+          <i class="fa fa-search" aria-hidden="true" style="color:white"></i>
+        </button>
+      </div>
+
+      <i style="margin-right: 15px;margin-top: 15px; color:aliceblue" class="fa fa-user-circle fa-4x"
+        aria-hidden="true"></i>
+    </nav>
+
+  </form>
 
   <hr style="border: 0;
   clear:both;
@@ -49,12 +54,29 @@
   height: 1px;" />
 
   {{{body}}}
-  
+
 
 </body>
 
 <script>
+  function change1() // no ';' here
+  {
+    var type = document.getElementById("typeButton");
+    var typeValue = document.getElementById("typeSearch");
+    type.value = "Cầu thủ";
+    type.innerHTML = "Cầu thủ";
+    typeValue.value="Player";
+  }
 
+  function change2() // no ';' here
+  {
+    var type = document.getElementById("typeButton");
+    var typeValue = document.getElementById("typeSearch");
+    type.value = "Đội bóng";
+    type.innerHTML = "Đội bóng";
+    typeValue.value="Team";
+
+  }
 </script>
 
 </html>

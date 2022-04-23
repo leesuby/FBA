@@ -25,6 +25,7 @@ import teamRouter from './routes/team.js';
 import playerRouter from './routes/player.js'
 import resultRouter from './routes/result.js';
 import connectDB from './database/connectDB.js';
+import homeRouter from './routes/home.js';
 
 
 
@@ -36,6 +37,7 @@ app.get('/', function (req, res) {
   });
 });
 
+app.use('/',homeRouter)
 app.use('/team', teamRouter)
 app.use('/player',playerRouter)
 app.use('/result',resultRouter)
