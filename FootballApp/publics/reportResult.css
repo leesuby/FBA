@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     height: 50px;
-  
   }
   
 h1{
@@ -99,15 +98,14 @@ h1{
 .pagination{
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .page-item{
   margin-right: 10px;
-  background-color: rgb(39, 157, 121);
-  padding: 10px;
-  
-  color: black;
 }
 .page-link{
-  color: blue;
+  color: black;
+  background-color: rgb(39, 157, 121);
+  border: 3px solid white;
+
 }
