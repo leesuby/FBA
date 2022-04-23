@@ -19,9 +19,11 @@ app.set('view engine', 'hbs');
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
 //route
 import teamRouter from './routes/team.js';
 import playerRouter from './routes/player.js'
+import resultRouter from './routes/result.js';
 import connectDB from './database/connectDB.js';
 
 
@@ -36,6 +38,7 @@ app.get('/', function (req, res) {
 
 app.use('/team', teamRouter)
 app.use('/player',playerRouter)
+app.use('/result',resultRouter)
 app.use(express.static(__dirname + '/publics'));
 
 const port = 5555;
