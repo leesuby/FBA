@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # database file
-db.js
+database/db.js
