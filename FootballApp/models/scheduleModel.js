@@ -6,6 +6,7 @@ export default{
         return db('tran_dau').limit(limit).offset(offset)
         .join('doi_bong as doi1',{'tran_dau.DoiChuNha': 'doi1.MaDoi'})
         .join('doi_bong as doi2',{'tran_dau.DoiKhach':'doi2.MaDoi'})
+        .join('vong_dau', {'tran_dau.VongDau': 'vong_dau.MaVong'})
         .select(
             'DoiChuNha',
             'VongDau',
@@ -14,7 +15,8 @@ export default{
             'GioThiDau',
             'SanDau',
             'doi1.TenDoi as TenDoiChuNha',
-            'doi2.TenDoi as TenDoiKhach'
+            'doi2.TenDoi as TenDoiKhach',
+            'TenVong'
         );
     },
     findByRoundID(roundId) {

@@ -36,4 +36,32 @@ scheduleRouter.get('/', async function (req, res) {
   })
   })
 
+scheduleRouter.post('/add', async function (req, res) {
+    
+    console.log(req.body);
+    const url = req.headers.referer || '/';
+    let total =await scheduleModel.countAll()+1;
+    
+    
+    
+    for(let i =0;i<req.body.Matches.length;i++){
+        const TranDau ={
+            MaTran :"TD"+(total).padLeft(3),
+            VongDau : req.body.Matches[i].VongDau,
+            DoiChuNha : req.body.Matches[i].DoiChuNha,
+            DoiKhach : req.body.Matches[i].DoiKhach,
+            NgayThiDau : req.body.Matches[i].NgayThiDau,
+            GioThiDau : req.body.Matches[i].GioThiDau
+    
+        };
+        total++;
+        const ret = await scheduleModel.add(TranDau);
+    }
+    
+    
+    
+    console.log(req.body);
+    res.redirect(url);
+})
+
 export default scheduleRouter;
