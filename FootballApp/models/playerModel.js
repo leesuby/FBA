@@ -8,18 +8,40 @@ export default{
          
         return db('cau_thu').where('MaCauThu', id);
     },
+    async countById(id) {
+        const list = await db('cau_thu').count({quantity: 'MaCauThu'}).where('MaCauThu', id);
+        return list[0].quantity;
+    },
     async countAll() {
         const list = await db('cau_thu').count({quantity: 'MaCauThu'});
         return list[0].quantity;
     },
-    findByName(name) {
+    findByName(name,limit,offset) {
         
-        return  db('cau_thu').where('TenCauThu', name);
+        const sql = `SELECT * FROM cau_thu 
+                    where MATCH (TenCauThu) 
+                    AGAINST (?) LIMIT ? OFFSET ? ;`
+        const values = [
+                    name,
+                    limit,
+                    offset
+                ];
+    
+        const raw = await db.raw(sql, values);
+                    // console.log(raw[0]);
+        return raw[0];        
     },
     async countByName(name) {
-        const list = await db('cau_thu').where('TenCauThu', name).count({quantity: ['MaCauThu','DoiBong']});
+        const sql = `SELECT COUNT(MaCauThu) as quantity FROM cau_thu 
+                    where MATCH (TenCauThu) 
+                    AGAINST (?) ;`
+        const values = [
+           name
+        ];
 
-        return list[0].quantity;
+        const raw = await db.raw(sql, values);
+        // console.log(raw[0]);
+        return raw[0][0].quantity;
     },
     async findByTeamID(teamId,limit,offset) {
         return db('cau_thu').where('DoiBong', teamId).limit(limit).offset(offset);
