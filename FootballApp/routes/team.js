@@ -1,6 +1,13 @@
 import { Router } from 'express';
+import playerModel from '../models/playerModel.js';
 import teamModel from '../models/teamModel.js';
 const teamRouter = Router()
+
+Number.prototype.padLeft = function (n,str){
+    return Array(n-String(this).length+1).join(str||'0')+this;
+  }
+
+
 
 teamRouter.get('/',async function (req, res) {
   const page = req.query.page || 1;
@@ -29,6 +36,42 @@ teamRouter.get('/',async function (req, res) {
       previousPage: +page - 1,
       nextPage: +page + 1,
   })
+})
+
+teamRouter.post('/addteam', async function (req, res) {
+    console.log(req.body);
+    const url = req.headers.referer || '/';
+    const total =await teamModel.countAll()+1;
+    req.body.MaDoi="DB"+(total).padLeft(3);
+    const ret = await teamModel.add(req.body);
+    console.log(req.body);
+    res.redirect(url);
+})
+
+teamRouter.post('/add_players_of_team', async function (req, res) {
+    console.log(req.body);
+    const url = req.headers.referer || '/';
+    let total =await playerModel.countAll()+1;
+    const doibong = req.body.DoiBong;
+    console.log(req.body.DoiBong);
+    console.log(doibong);
+    
+    for(let i =0;i<req.body.Players.length;i++){
+        const player={
+            MaCauThu :"CT"+(total).padLeft(3),
+            TenCauThu : req.body.Players[i].TenCauThu,
+            LoaiCauThu : req.body.Players[i].LoaiCauThu,
+            DoiBong : doibong
+    
+        };
+        total++;
+        const ret = await playerModel.add(player);
+    }
+    
+    
+    
+    console.log(req.body);
+    res.redirect(url);
 })
 
 export default teamRouter;
