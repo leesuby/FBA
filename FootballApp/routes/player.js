@@ -18,7 +18,13 @@ playerRouter.get('/', async function (req, res) {
   }
 
   const list = await playerModel.findAll(limit, offset);
+  for(let idx=0;idx<list.length;idx++){
+    if(list[idx].LoaiCauThu==0)
+    list[idx].LoaiCauThu='Trong nước'
+    else  if(list[idx].LoaiCauThu==1)
+    list[idx].LoaiCauThu='Ngoài nước'
 
+  }
   console.log(list);
   res.render('viewPlayer', {
       players: list,

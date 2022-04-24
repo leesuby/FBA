@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import teamModels from '../models/teamModels.js';
+import teamModel from '../models/teamModel.js';
 const teamRouter = Router()
 
 teamRouter.get('/',async function (req, res) {
   const page = req.query.page || 1;
   const limit = 7;
-  const total =await teamModels.countAll();
+  const total =await teamModel.countAll();
   let nPages = Math.floor(total / limit);
   if (total % limit > 0) nPages++;
   const pageNumbers = [];
@@ -17,7 +17,7 @@ teamRouter.get('/',async function (req, res) {
       });
   }
 
-  const list = await teamModels.findAll(limit, offset);
+  const list = await teamModel.findAll(limit, offset);
 
   console.log(list);
   res.render('viewTeam', {

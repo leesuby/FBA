@@ -13,12 +13,13 @@ export default{
         const list = await db('doi_bong').count({quantity: 'MaDoi'});
         return list[0].quantity;
     },
-    findByName(name) {
+    findByNameorID(key) {
         
-        return  db.select('*').from('doi_bong').join('san_bong', {'doi_bong.SanNha': 'san_bong.MaSan'}).where('TenDoi', name);
+        return  db.select('*').from('doi_bong').join('san_bong', {'doi_bong.SanNha': 'san_bong.MaSan'}).where('TenDoi', key)
+        .orWhere('MaDoi',key);
     },
-    async countByName(name) {
-        const list = await db('doi_bong').where('TenDoi', name).count({quantity: 'MaDoi'});
+    async countByNameorID(key) {
+        const list = await db('doi_bong').where('TenDoi', key).orWhere('MaDoi',key).count({quantity: 'MaDoi'});
 
         return list[0].quantity;
     },
